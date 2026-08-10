@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — VoiCat</title>
+  <style>
+    :root {
+      --purple: #6138DB;
+      --fuchsia: #AD30B8;
+      --bg: #f5f5f7;
+      --card: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --border: #e5e5ea;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(135deg, var(--purple), var(--fuchsia));
+      padding: 48px 24px 40px;
+      text-align: center;
+      color: white;
+    }
+    header .logo { font-size: 36px; font-weight: 800; letter-spacing: -0.5px; }
+    header .tagline { font-size: 14px; opacity: 0.8; margin-top: 4px; }
+    header h1 { font-size: 22px; font-weight: 600; margin-top: 20px; opacity: 0.95; }
+    header .date { font-size: 13px; opacity: 0.7; margin-top: 6px; }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: var(--purple);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--purple);
+      transition: all 0.2s;
+    }
+    nav a:hover, nav a.active { background: var(--purple); color: white; }
+    main { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+    section {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+    }
+    h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h2::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 18px;
+      background: linear-gradient(var(--purple), var(--fuchsia));
+      border-radius: 2px;
+    }
+    p { font-size: 15px; margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    ul li { font-size: 15px; margin-bottom: 6px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 12px;
+    }
+    th {
+      background: linear-gradient(135deg, var(--purple), var(--fuchsia));
+      color: white;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+    th:first-child { border-radius: 8px 0 0 0; }
+    th:last-child { border-radius: 0 8px 0 0; }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--bg); }
+    .highlight {
+      background: linear-gradient(135deg, rgba(97,56,219,0.06), rgba(173,48,184,0.06));
+      border-left: 3px solid var(--purple);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 16px 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--purple); text-decoration: none; }
+    a { color: var(--purple); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">VoiCat</div>
+  <div class="tagline">Voice to Text, Translate & Summarize</div>
+  <h1>Terms of Service</h1>
+  <div class="date">Last updated: August 2026</div>
+</header>
+
+<nav>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="terms.html" class="active">Terms of Service</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<main>
+
+  <section>
+    <h2>Agreement to Terms</h2>
+    <p>By downloading or using VoiCat, you agree to these Terms of Service. If you do not agree, please do not use the app. These terms apply to all versions of VoiCat available on the Apple App Store.</p>
+  </section>
+
+  <section>
+    <h2>Description of Service</h2>
+    <p>VoiCat is an iOS application that enables users to:</p>
+    <ul>
+      <li>Record and import audio files</li>
+      <li>Transcribe audio to text using AI</li>
+      <li>Translate transcriptions into multiple languages</li>
+      <li>Generate AI-powered summaries of audio content</li>
+    </ul>
+    <p>The service requires an active internet connection for AI processing. Local storage and playback work offline.</p>
+  </section>
+
+  <section>
+    <h2>Subscription Plans & Quotas</h2>
+    <p>VoiCat offers three tiers:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Plan</th>
+          <th>Monthly Quota</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Free</strong></td>
+          <td>30 minutes / 10 recordings</td>
+          <td>Free</td>
+        </tr>
+        <tr>
+          <td><strong>Pro</strong></td>
+          <td>180 minutes</td>
+          <td>$4.99/mo or $49.99/yr</td>
+        </tr>
+        <tr>
+          <td><strong>Max</strong></td>
+          <td>600 minutes</td>
+          <td>$9.99/mo or $99.99/yr</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight">
+      Quotas reset on the first day of each calendar month. Unused quota does not carry over to the next month.
+    </div>
+  </section>
+
+  <section>
+    <h2>Billing & Cancellation</h2>
+    <p>All subscriptions are managed through Apple's App Store:</p>
+    <ul>
+      <li>Payment is charged to your Apple ID account at confirmation of purchase.</li>
+      <li>Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current period.</li>
+      <li>You can manage or cancel your subscription at any time in iOS Settings → Apple ID → Subscriptions.</li>
+      <li>Refunds are handled by Apple. We do not issue refunds directly.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Acceptable Use</h2>
+    <p>You agree to use VoiCat only for lawful purposes. You must not:</p>
+    <ul>
+      <li>Record conversations without the knowledge and consent of all parties where required by law.</li>
+      <li>Use the service to process content that is illegal, harmful, threatening, or violates third-party rights.</li>
+      <li>Attempt to reverse engineer, bypass, or abuse the service's quota system.</li>
+      <li>Use automated tools to interact with the service in a manner inconsistent with normal usage.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Intellectual Property</h2>
+    <p>You retain full ownership of all audio recordings and content you process through VoiCat. By using the service, you grant us a limited, temporary license to process your audio solely to provide the transcription, translation, and summarization services.</p>
+    <p>The VoiCat app, including its design, code, branding, and mascot, is owned by VoiCat and protected by copyright and intellectual property laws.</p>
+  </section>
+
+  <section>
+    <h2>Disclaimer of Warranties</h2>
+    <p>VoiCat is provided "as is" without warranties of any kind. We do not guarantee that:</p>
+    <ul>
+      <li>Transcriptions will be 100% accurate (accuracy depends on audio quality and language).</li>
+      <li>The service will be available without interruption.</li>
+      <li>AI-generated translations and summaries will be error-free.</li>
+    </ul>
+    <p>AI-generated content should be reviewed before use in professional or legal contexts.</p>
+  </section>
+
+  <section>
+    <h2>Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, VoiCat and its developer shall not be liable for any indirect, incidental, or consequential damages arising from your use of the app, including but not limited to loss of data or business interruption.</p>
+  </section>
+
+  <section>
+    <h2>Changes to Terms</h2>
+    <p>We reserve the right to modify these Terms at any time. We will notify users of material changes by updating the "Last updated" date. Continued use of VoiCat after changes constitutes your acceptance of the revised Terms.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>For questions about these Terms, please <a href="contact.html">contact us</a>.</p>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 VoiCat. All rights reserved.</p>
+  <p style="margin-top:6px"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="contact.html">Contact</a></p>
+</footer>
+
+</body>
+</html>
