@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VoiCat turns voice notes into accurate transcripts, translations, and useful summaries.">
+  <meta name="theme-color" content="#6b35df">
+  <title>VoiCat — AI Voice Notes</title>
+  <style>
+    :root {
+      --ink: #17131f;
+      --muted: #6f6a78;
+      --purple: #6436df;
+      --pink: #bd2eb8;
+      --line: rgba(63, 42, 91, .11);
+      --paper: #fff;
+      --soft: #f8f6fb;
+      --shadow: 0 22px 55px rgba(77, 42, 143, .14);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 4% 2%, rgba(112, 55, 223, .09), transparent 26rem),
+        radial-gradient(circle at 96% 18%, rgba(206, 45, 180, .08), transparent 28rem),
+        var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid transparent;
+      background: rgba(255, 255, 255, .78);
+      backdrop-filter: blur(18px);
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .nav.scrolled { border-color: var(--line); box-shadow: 0 8px 28px rgba(36, 20, 66, .06); }
+    .nav-inner { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 20px; font-weight: 800; text-decoration: none; }
+    .brand img { width: 38px; height: 38px; border-radius: 11px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none; transition: color .2s ease; }
+    .nav-links a:hover, .nav-links a.active { color: var(--purple); }
+
+    .hero { padding: 92px 0 74px; text-align: center; }
+    .hero-icon { width: 104px; height: 104px; margin: 0 auto 26px; border-radius: 28px; box-shadow: 0 18px 45px rgba(100, 54, 223, .25); }
+    .eyebrow { color: var(--purple); font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { max-width: 820px; margin: 14px auto 18px; font-size: clamp(46px, 7vw, 80px); line-height: .99; letter-spacing: -.055em; }
+    .gradient-text { color: var(--purple); background: linear-gradient(110deg, var(--purple), var(--pink)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .lead { max-width: 650px; margin: 0 auto; color: var(--muted); font-size: clamp(18px, 2vw, 22px); line-height: 1.55; }
+    .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border: 1px solid var(--line); border-radius: 999px; background: white; font-size: 14px; font-weight: 750; text-decoration: none; box-shadow: 0 8px 22px rgba(42, 22, 78, .07); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .button.primary { color: white; border-color: transparent; background: linear-gradient(110deg, var(--purple), var(--pink)); }
+    .button:hover { transform: translateY(-2px); border-color: rgba(100, 54, 223, .35); box-shadow: 0 14px 28px rgba(72, 39, 132, .13); }
+
+    .features { padding: 44px 0 92px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 28px; }
+    .section-head h2 { margin: 0 0 8px; font-size: clamp(30px, 4vw, 48px); letter-spacing: -.04em; }
+    .section-head p { max-width: 500px; margin: 0; color: var(--muted); line-height: 1.6; }
+    .scroll-hint { flex: none; color: var(--muted); font-size: 13px; }
+    .showcase { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 340px); gap: 18px; overflow-x: auto; padding: 8px 2px 34px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: rgba(100, 54, 223, .35) transparent; }
+    .screen-card { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 30px; background: white; box-shadow: 0 14px 36px rgba(58, 31, 107, .1); scroll-snap-align: start; transition: transform .25s ease, box-shadow .25s ease; }
+    .screen-card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+    .screen-card img { width: 100%; height: auto; }
+
+    .benefits { border-block: 1px solid var(--line); background: var(--soft); padding: 72px 0; }
+    .benefit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .benefit { min-height: 170px; padding: 24px; border: 1px solid var(--line); border-radius: 22px; background: rgba(255, 255, 255, .76); transition: transform .2s ease, background .2s ease; }
+    .benefit:hover { transform: translateY(-3px); background: white; }
+    .benefit-icon { width: 42px; height: 42px; display: grid; place-items: center; margin-bottom: 20px; border-radius: 13px; color: white; background: linear-gradient(135deg, var(--purple), var(--pink)); font-size: 20px; }
+    .benefit h3 { margin: 0 0 8px; font-size: 17px; }
+    .benefit p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+    footer { padding: 34px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; color: var(--muted); font-size: 13px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .footer-links a { text-decoration: none; }
+    .footer-links a:hover { color: var(--purple); }
+
+    @media (max-width: 780px) {
+      .wrap { width: min(100% - 28px, 1180px); }
+      .nav-inner { flex-wrap: wrap; padding: 10px 0; }
+      .nav-links { order: 2; width: 100%; justify-content: space-between; gap: 10px; }
+      .hero { padding: 66px 0 50px; }
+      .section-head { display: block; }
+      .scroll-hint { display: block; margin-top: 14px; }
+      .benefit-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { min-height: 62px; }
+      .brand span { font-size: 18px; }
+      .brand img { width: 34px; height: 34px; }
+      .nav-links a { font-size: 13px; }
+      .hero-icon { width: 88px; height: 88px; border-radius: 24px; }
+      .showcase { grid-auto-columns: 82%; }
+      .benefit-grid { grid-template-columns: 1fr; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="VoiCat home">
+        <img src="assets/voicat-icon.webp" alt="" width="38" height="38">
+        <span>VoiCat</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html" class="active" aria-current="page">Home</a>
+        <a href="#features">Features</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <img class="hero-icon" src="assets/voicat-icon.webp" alt="VoiCat app icon" width="104" height="104">
+      <div class="eyebrow">AI voice notes, made useful</div>
+      <h1>Turn every voice into <span class="gradient-text">clear insight.</span></h1>
+      <p class="lead">Record or import audio, then transcribe, translate, and summarize it in seconds — all in one focused app.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#features">Explore VoiCat</a>
+        <a class="button" href="contact.html">Contact us</a>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Everything in one place</div>
+            <h2>From audio to action.</h2>
+            <p>Move through the latest VoiCat experience, from capturing a thought to finding the exact note you need.</p>
+          </div>
+          <span class="scroll-hint">Scroll to explore →</span>
+        </div>
+
+        <div class="showcase" aria-label="VoiCat app screenshots">
+          <article class="screen-card"><img src="assets/01-record-import.webp" alt="Record or import audio in VoiCat" width="770" height="1666" loading="eager"></article>
+          <article class="screen-card"><img src="assets/02-extension.webp" alt="Import audio with the VoiCat share extension" width="770" height="1666" loading="lazy"></article>
+          <article class="screen-card"><img src="assets/03-transcription.webp" alt="Accurate AI transcription in VoiCat" width="770" height="1666" loading="lazy"></article>
+          <article class="screen-card"><img src="assets/04-translation.webp" alt="Translate notes into more than 50 languages" width="770" height="1666" loading="lazy"></article>
+          <article class="screen-card"><img src="assets/05-summary.webp" alt="Create quick AI summaries in VoiCat" width="770" height="1666" loading="lazy"></article>
+          <article class="screen-card"><img src="assets/06-organize-private.webp" alt="Organize voice notes privately in VoiCat" width="770" height="1666" loading="lazy"></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="Key benefits">
+      <div class="wrap benefit-grid">
+        <article class="benefit"><div class="benefit-icon" aria-hidden="true">✦</div><h3>AI powered</h3><p>Accurate transcription and useful summaries without a complicated workflow.</p></article>
+        <article class="benefit"><div class="benefit-icon" aria-hidden="true">◎</div><h3>50+ languages</h3><p>Translate your content so ideas can travel across languages.</p></article>
+        <article class="benefit"><div class="benefit-icon" aria-hidden="true">⌾</div><h3>Private & secure</h3><p>Your voice notes and results stay organized on your device.</p></article>
+        <article class="benefit"><div class="benefit-icon" aria-hidden="true">ϟ</div><h3>Save time</h3><p>Turn long recordings into searchable text and clear highlights.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© 2026 VoiCat. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.querySelector('#nav');
+    const updateNav = () => nav.classList.toggle('scrolled', window.scrollY > 10);
+    const homeLink = document.querySelector('.nav-links a[href="index.html"]');
+    const featuresLink = document.querySelector('.nav-links a[href="#features"]');
+    const setHomeSection = (section) => {
+      homeLink.classList.toggle('active', section === 'home');
+      featuresLink.classList.toggle('active', section === 'features');
+      homeLink.toggleAttribute('aria-current', section === 'home');
+      featuresLink.toggleAttribute('aria-current', section === 'features');
+    };
+    const featuresObserver = new IntersectionObserver(([entry]) => {
+      setHomeSection(entry.isIntersecting ? 'features' : 'home');
+    }, { rootMargin: '-30% 0px -55% 0px' });
+    featuresObserver.observe(document.querySelector('#features'));
+    updateNav();
+    window.addEventListener('scroll', updateNav, { passive: true });
+  </script>
+</body>
+</html>
