@@ -122,57 +122,57 @@
 <header class="page-hero">
   <div class="eyebrow">Your data, clearly explained</div>
   <h1>Privacy Policy</h1>
-  <div class="date">Last updated: August 2026</div>
+  <div class="date">Last updated: August 29, 2026</div>
 </header>
 
 <main>
 
   <section>
     <h2>Overview</h2>
-    <p>VoiCat ("we", "our", or "us") is committed to protecting your privacy. This policy explains what data we collect, how we use it, and your rights.</p>
+    <p>VoiCat ("we", "our", or "us") is committed to protecting your privacy. This policy explains what data we process, how we use it, and the choices available to you.</p>
     <div class="highlight">
-      VoiCat does not require account registration. Your voice notes are stored locally on your device by default.
+      VoiCat does not require account registration. Your voice notes and AI results are stored locally on your device by default.
     </div>
   </section>
 
   <section>
     <h2>Data We Collect</h2>
-    <p>We collect only the minimum data necessary to provide our services:</p>
+    <p>We process only the data necessary to provide and protect the service:</p>
     <ul>
-      <li><strong>Audio recordings</strong> — temporarily sent to our AI processing service for transcription, translation, and summarization, then immediately discarded.</li>
-      <li><strong>Usage data</strong> — recording count and duration stored locally on your device to enforce transcription quotas.</li>
-      <li><strong>Security identifier</strong> — a random app-installation identifier may be processed by our API gateway solely to limit abusive requests. It is not linked to your identity and is not used for tracking.</li>
-      <li><strong>Subscription status</strong> — managed entirely by Apple via StoreKit. We do not receive or store payment information.</li>
+      <li><strong>Audio and text you choose to process</strong> — audio, transcripts, and text may be transmitted to Cloudflare and OpenAI to perform the transcription, translation, or summary you request. VoiCat and its Cloudflare gateway do not store copies of this audio or processed text after processing.</li>
+      <li><strong>Local note data</strong> — your recordings, transcripts, translations, summaries, and edits are stored in the app on your device.</li>
+      <li><strong>Service and quota data</strong> — a random app-installation identifier and a limited free-usage count are processed to enforce the free quota. For paid subscriptions, we store limited pseudonymous entitlement data, such as the original StoreKit transaction identifier, selected product or tier, entitlement expiry, allowance, and usage. This data is used only to verify subscription access and enforce quotas.</li>
+      <li><strong>Payment information</strong> — payments are processed by Apple. We do not receive or store your payment card details or Apple Account email address.</li>
     </ul>
-    <p>We do not collect your name, email address, location, or any personally identifiable information.</p>
+    <p>We do not ask you to create a VoiCat account, and we do not collect your name, location, or payment details for our own use. We do not use service data for advertising or cross-app tracking.</p>
   </section>
 
   <section>
     <h2>How We Process Your Audio</h2>
-    <p>When you record or import audio, it is sent to our secure server (powered by Cloudflare) which forwards it to OpenAI's Whisper API for transcription and GPT for translation and summarization.</p>
+    <p>When you record or import audio, it is sent over encrypted HTTPS to our Cloudflare gateway and forwarded to OpenAI's API to perform the AI action you requested, such as transcription, translation, or summarization.</p>
     <ul>
       <li>Audio is transmitted over encrypted HTTPS connections.</li>
-      <li>Audio is processed in real time and is not stored on our servers.</li>
-      <li>Processed results (text) are returned to your device and stored locally.</li>
+      <li>VoiCat and its Cloudflare gateway process requests in transit and do not retain audio files or processed text after processing.</li>
+      <li>Processed results are returned to your device and saved locally by the app.</li>
     </ul>
     <div class="highlight">
-      OpenAI's data handling is governed by their <a href="https://openai.com/privacy" target="_blank">Privacy Policy</a>. We use their API under a data processing agreement that prohibits using your data for model training.
+      OpenAI does not use API data to train its models by default. Unless Zero Data Retention is enabled for our OpenAI API project, OpenAI may retain API inputs and outputs for up to 30 days for abuse monitoring, subject to its policies. We do not enable optional data sharing. Learn more in <a href="https://openai.com/enterprise-privacy/" target="_blank" rel="noopener noreferrer">OpenAI's API privacy information</a> and <a href="https://platform.openai.com/docs/models/default-usage-policies-by-endpoint" target="_blank" rel="noopener noreferrer">data retention documentation</a>.
     </div>
   </section>
 
   <section>
     <h2>Local Storage</h2>
-    <p>All voice notes, transcriptions, translations, and summaries are stored exclusively on your device using Apple's local storage APIs. This data:</p>
+    <p>Voice notes, transcriptions, translations, summaries, and edits are stored in VoiCat on your device using Apple's local storage APIs. This data:</p>
     <ul>
       <li>Is included in your iCloud backup if you have iCloud Backup enabled.</li>
-      <li>Is deleted when you delete a note or uninstall the app.</li>
-      <li>Is never synced to our servers.</li>
+      <li>Is deleted from the app when you delete a note; removing the app also removes its local app data, subject to any device or iCloud backups you control.</li>
+      <li>Is not synced or retained by VoiCat's servers.</li>
     </ul>
   </section>
 
   <section>
     <h2>Subscriptions & Payments</h2>
-    <p>VoiCat offers optional paid subscriptions (Pro and Max tiers) processed entirely by Apple's App Store. We never see, handle, or store your payment details. For subscription management, refunds, or billing inquiries, please contact Apple Support.</p>
+    <p>VoiCat offers optional paid subscriptions (Pro and Max tiers) processed by Apple's App Store. Apple handles payment processing, and we never see, handle, or store your payment details. To make subscriptions work, our service verifies StoreKit entitlement information and retains the limited pseudonymous subscription and quota data described above. For subscription management, refunds, or billing inquiries, please contact Apple Support.</p>
   </section>
 
   <section>
@@ -187,8 +187,8 @@
 
   <section>
     <h2>Your Rights</h2>
-    <p>Since we do not collect personal data tied to your identity, there is nothing to request deletion of on our end. All your data is on your device — you can delete individual notes or all notes at any time from the app's Settings.</p>
-    <p>For any privacy concerns, please <a href="contact.html">contact us</a>.</p>
+    <p>You can delete individual notes or all local notes at any time from the app's Settings. You may also contact us to ask about the limited service data associated with your installation or subscription. We will respond to applicable privacy requests, subject to legal, security, fraud-prevention, and entitlement-recordkeeping requirements.</p>
+    <p>For privacy questions or requests, please <a href="mailto:ps.glocal@gmail.com?subject=VoiCat%20Privacy%20Request">contact us</a>.</p>
   </section>
 
   <section>
