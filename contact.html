@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — VoiCat</title>
+  <title>Contact — VoiCat</title>
   <style>
     :root {
       --purple: #6138DB;
@@ -30,8 +30,7 @@
     header .logo { font-size: 36px; font-weight: 800; letter-spacing: -0.5px; }
     header .tagline { font-size: 14px; opacity: 0.8; margin-top: 4px; }
     header h1 { font-size: 22px; font-weight: 600; margin-top: 20px; opacity: 0.95; }
-    header .date { font-size: 13px; opacity: 0.7; margin-top: 6px; }
-
+    header p { font-size: 14px; opacity: 0.75; margin-top: 8px; }
     nav {
       display: flex;
       justify-content: center;
@@ -51,16 +50,45 @@
       border: 1px solid var(--purple);
       transition: all 0.2s;
     }
-    nav a:hover, nav a.active {
-      background: var(--purple);
-      color: white;
-    }
+    nav a:hover, nav a.active { background: var(--purple); color: white; }
+    main { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
 
-    main {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 32px 20px 64px;
+    /* Contact cards */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
     }
+    .contact-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      text-align: center;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .contact-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(97,56,219,0.12);
+    }
+    .contact-card .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--purple), var(--fuchsia));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+      font-size: 22px;
+    }
+    .contact-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .contact-card p { font-size: 13px; color: var(--muted); margin: 0; }
+
+    /* FAQ */
     section {
       background: var(--card);
       border-radius: 16px;
@@ -72,7 +100,7 @@
       font-size: 17px;
       font-weight: 700;
       color: var(--purple);
-      margin-bottom: 14px;
+      margin-bottom: 18px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -85,19 +113,50 @@
       background: linear-gradient(var(--purple), var(--fuchsia));
       border-radius: 2px;
     }
-    p { font-size: 15px; color: var(--text); margin-bottom: 12px; }
-    p:last-child { margin-bottom: 0; }
-    ul { padding-left: 20px; margin-bottom: 12px; }
-    ul li { font-size: 15px; margin-bottom: 6px; }
-    .highlight {
-      background: linear-gradient(135deg, rgba(97,56,219,0.06), rgba(173,48,184,0.06));
-      border-left: 3px solid var(--purple);
-      border-radius: 8px;
-      padding: 14px 16px;
-      margin: 16px 0;
+    details {
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+    details:last-child { border-bottom: none; padding-bottom: 0; }
+    details:first-of-type { padding-top: 0; }
+    summary {
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-size: 20px;
+      color: var(--purple);
+      font-weight: 300;
+      transition: transform 0.2s;
+    }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p {
+      margin-top: 10px;
       font-size: 14px;
       color: var(--muted);
+      line-height: 1.6;
     }
+
+    /* Response time badge */
+    .badge {
+      display: inline-block;
+      background: rgba(97,56,219,0.1);
+      color: var(--purple);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-top: 8px;
+    }
+
     footer {
       text-align: center;
       padding: 32px 20px;
@@ -106,7 +165,6 @@
       border-top: 1px solid var(--border);
     }
     footer a { color: var(--purple); text-decoration: none; }
-    a { color: var(--purple); }
   </style>
   <link rel="stylesheet" href="legal.css">
 </head>
@@ -115,90 +173,88 @@
 <nav class="topbar" aria-label="Main navigation">
   <div class="topbar-inner">
     <a class="brand" href="index.html"><img src="assets/voicat-icon.webp" alt="" width="38" height="38"><span>VoiCat</span></a>
-    <div class="top-links"><a href="index.html">Home</a><a href="index.html#features">Features</a><a href="privacy.html" class="active" aria-current="page">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a></div>
+    <div class="top-links"><a href="index.html">Home</a><a href="index.html#features">Features</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html" class="active" aria-current="page">Contact</a></div>
   </div>
 </nav>
 
 <header class="page-hero">
-  <div class="eyebrow">Your data, clearly explained</div>
-  <h1>Privacy Policy</h1>
-  <div class="date">Last updated: August 29, 2026</div>
+  <div class="eyebrow">Support when you need it</div>
+  <h1>Contact Us</h1>
+  <p>We're here to help — reach out any time</p>
 </header>
 
 <main>
 
+  <div class="contact-grid">
+    <a class="contact-card" href="mailto:support@voicat.app">
+      <div class="icon">✉️</div>
+      <h3>Email Support</h3>
+      <p>support@voicat.app</p>
+      <div class="badge">Replies within 24–48h</div>
+    </a>
+
+    <a class="contact-card" href="https://apps.apple.com/app/id" target="_blank">
+      <div class="icon">⭐</div>
+      <h3>Rate on App Store</h3>
+      <p>Enjoy VoiCat? Leave us a review</p>
+    </a>
+
+    <a class="contact-card" href="mailto:support@voicat.app?subject=VoiCat%20Bug%20Report">
+      <div class="icon">🐛</div>
+      <h3>Report a Bug</h3>
+      <p>Help us improve VoiCat</p>
+    </a>
+  </div>
+
   <section>
-    <h2>Overview</h2>
-    <p>VoiCat ("we", "our", or "us") is committed to protecting your privacy. This policy explains what data we process, how we use it, and the choices available to you.</p>
-    <div class="highlight">
-      VoiCat does not require account registration. Your voice notes and AI results are stored locally on your device by default.
-    </div>
+    <h2>Frequently Asked Questions</h2>
+
+    <details>
+      <summary>Why is my transcription inaccurate?</summary>
+      <p>Transcription accuracy depends on audio clarity, background noise, and language. For best results, record in a quiet environment and speak clearly. Accuracy is typically above 95% for clear speech in supported languages.</p>
+    </details>
+
+    <details>
+      <summary>What languages are supported?</summary>
+      <p>VoiCat supports transcription in over 50 languages via OpenAI Whisper. Translation is available between major world languages including Arabic, English, French, Spanish, German, Chinese, Japanese, and more.</p>
+    </details>
+
+    <details>
+      <summary>How do I cancel my subscription?</summary>
+      <p>Subscriptions are managed by Apple. Go to iOS Settings → tap your name → Subscriptions → VoiCat → Cancel Subscription. Cancellation takes effect at the end of the current billing period.</p>
+    </details>
+
+    <details>
+      <summary>My quota says 0 but I haven't used it this month.</summary>
+      <p>Paid-minute allowances reset with your subscription allowance period, not on a fixed calendar date. A plan downgrade may take effect at the end of the current billing period. If the issue persists, please contact us with your device details.</p>
+    </details>
+
+    <details>
+      <summary>Is my audio stored anywhere?</summary>
+      <p>VoiCat and its Cloudflare gateway do not retain copies of your recordings after processing. Audio is sent securely to OpenAI's API to perform the requested AI processing; see our <a href="privacy.html">Privacy Policy</a> for details about third-party processing and retention.</p>
+    </details>
+
+    <details>
+      <summary>Can I use VoiCat offline?</summary>
+      <p>Playback of existing recordings works offline. Transcription, translation, and summarization require an internet connection as they are processed by our AI service.</p>
+    </details>
+
+    <details>
+      <summary>How do I import from WhatsApp?</summary>
+      <p>In WhatsApp, open a voice message → tap the three dots → Share → VoiCat. Alternatively, use the Import button in the app and choose "Files" to select any audio file from your device.</p>
+    </details>
+
+    <details>
+      <summary>I need a refund. How do I get one?</summary>
+      <p>Refunds are handled by Apple. Visit <a href="https://reportaproblem.apple.com" target="_blank">reportaproblem.apple.com</a>, sign in with your Apple ID, and select the VoiCat subscription to request a refund.</p>
+    </details>
+
   </section>
 
   <section>
-    <h2>Data We Collect</h2>
-    <p>We process only the data necessary to provide and protect the service:</p>
-    <ul>
-      <li><strong>Audio and text you choose to process</strong> — audio, transcripts, and text may be transmitted to Cloudflare and OpenAI to perform the transcription, translation, or summary you request. VoiCat and its Cloudflare gateway do not store copies of this audio or processed text after processing.</li>
-      <li><strong>Local note data</strong> — your recordings, transcripts, translations, summaries, and edits are stored in the app on your device.</li>
-      <li><strong>Service and quota data</strong> — a random app-installation identifier and a limited free-usage count are processed to enforce the free quota. For paid subscriptions, we store limited pseudonymous entitlement data, such as the original StoreKit transaction identifier, selected product or tier, entitlement expiry, allowance, and usage. This data is used only to verify subscription access and enforce quotas.</li>
-      <li><strong>Payment information</strong> — payments are processed by Apple. We do not receive or store your payment card details or Apple Account email address.</li>
-    </ul>
-    <p>We do not ask you to create a VoiCat account, and we do not collect your name, location, or payment details for our own use. We do not use service data for advertising or cross-app tracking.</p>
-  </section>
-
-  <section>
-    <h2>How We Process Your Audio</h2>
-    <p>When you record or import audio, it is sent over encrypted HTTPS to our Cloudflare gateway and forwarded to OpenAI's API to perform the AI action you requested, such as transcription, translation, or summarization.</p>
-    <ul>
-      <li>Audio is transmitted over encrypted HTTPS connections.</li>
-      <li>VoiCat and its Cloudflare gateway process requests in transit and do not retain audio files or processed text after processing.</li>
-      <li>Processed results are returned to your device and saved locally by the app.</li>
-    </ul>
-    <div class="highlight">
-      OpenAI does not use API data to train its models by default. Unless Zero Data Retention is enabled for our OpenAI API project, OpenAI may retain API inputs and outputs for up to 30 days for abuse monitoring, subject to its policies. We do not enable optional data sharing. Learn more in <a href="https://openai.com/enterprise-privacy/" target="_blank" rel="noopener noreferrer">OpenAI's API privacy information</a> and <a href="https://platform.openai.com/docs/models/default-usage-policies-by-endpoint" target="_blank" rel="noopener noreferrer">data retention documentation</a>.
-    </div>
-  </section>
-
-  <section>
-    <h2>Local Storage</h2>
-    <p>Voice notes, transcriptions, translations, summaries, and edits are stored in VoiCat on your device using Apple's local storage APIs. This data:</p>
-    <ul>
-      <li>Is included in your iCloud backup if you have iCloud Backup enabled.</li>
-      <li>Is deleted from the app when you delete a note; removing the app also removes its local app data, subject to any device or iCloud backups you control.</li>
-      <li>Is not synced or retained by VoiCat's servers.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Subscriptions & Payments</h2>
-    <p>VoiCat offers optional paid subscriptions (Pro and Max tiers) processed by Apple's App Store. Apple handles payment processing, and we never see, handle, or store your payment details. To make subscriptions work, our service verifies StoreKit entitlement information and retains the limited pseudonymous subscription and quota data described above. For subscription management, refunds, or billing inquiries, please contact Apple Support.</p>
-  </section>
-
-  <section>
-    <h2>Third-Party Services</h2>
-    <p>VoiCat uses the following third-party services:</p>
-    <ul>
-      <li><strong>OpenAI</strong> — AI processing (transcription, translation, summarization)</li>
-      <li><strong>Cloudflare</strong> — Secure API gateway</li>
-      <li><strong>Apple StoreKit</strong> — Subscription and payment processing</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Your Rights</h2>
-    <p>You can delete individual notes or all local notes at any time from the app's Settings. You may also contact us to ask about the limited service data associated with your installation or subscription. We will respond to applicable privacy requests, subject to legal, security, fraud-prevention, and entitlement-recordkeeping requirements.</p>
-    <p>For privacy questions or requests, please <a href="mailto:support@voicat.app?subject=VoiCat%20Privacy%20Request">contact us</a>.</p>
-  </section>
-
-  <section>
-    <h2>Children's Privacy</h2>
-    <p>VoiCat is not directed at children under 13. We do not knowingly collect data from children. If you believe a child has used our app, please contact us and we will take appropriate action.</p>
-  </section>
-
-  <section>
-    <h2>Changes to This Policy</h2>
-    <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by updating the "Last updated" date above. Continued use of VoiCat after changes constitutes acceptance of the updated policy.</p>
+    <h2>Send Us a Message</h2>
+    <p style="font-size:14px; color: var(--muted); margin-bottom: 16px;">For the fastest response, email us directly at <a href="mailto:support@voicat.app">support@voicat.app</a> with a description of your issue and your device model (e.g. iPhone 15, iOS 18).</p>
+    <p style="font-size:14px; color: var(--muted);">We typically respond within 1–2 business days.</p>
   </section>
 
 </main>
