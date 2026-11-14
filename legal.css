@@ -1,12 +1,12 @@
 :root {
   --ink: #17131f;
   --muted: #6f6a78;
-  --purple: #6138DB;
-  --fuchsia: #AD30B8;
+  --purple: #6436df;
+  --fuchsia: #bd2eb8;
   --bg: #f8f6fb;
   --card: #fff;
   --border: rgba(63, 42, 91, .11);
-  --shadow: 0 18px 46px rgba(70, 58, 100, .12);
+  --shadow: 0 18px 46px rgba(72, 39, 132, .10);
 }
 
 * { box-sizing: border-box; }
@@ -15,8 +15,8 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    radial-gradient(circle at 4% 0%, rgba(97, 56, 219, .09), transparent 26rem),
-    radial-gradient(circle at 96% 16%, rgba(173, 48, 184, .07), transparent 28rem),
+    radial-gradient(circle at 4% 0%, rgba(112, 55, 223, .09), transparent 26rem),
+    radial-gradient(circle at 96% 16%, rgba(206, 45, 180, .07), transparent 28rem),
     var(--bg);
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
   line-height: 1.65;
@@ -118,7 +118,7 @@ section {
 }
 section:hover {
   transform: translateY(-2px);
-  border-color: rgba(97, 56, 219, .18);
+  border-color: rgba(100, 54, 223, .18);
   box-shadow: var(--shadow);
 }
 h2 {
@@ -136,17 +136,17 @@ li { margin-bottom: 7px; }
 .highlight {
   margin: 18px 0 0;
   padding: 16px 18px;
-  border: 1px solid rgba(97, 56, 219, .12);
+  border: 1px solid rgba(100, 54, 223, .12);
   border-left: 3px solid var(--purple);
   border-radius: 12px;
   color: var(--muted);
-  background: linear-gradient(135deg, rgba(97, 56, 219, .06), rgba(173, 48, 184, .05));
+  background: linear-gradient(135deg, rgba(100, 54, 223, .06), rgba(189, 46, 184, .05));
 }
 
 table { overflow: hidden; border: 1px solid var(--border); border-radius: 14px; }
 th { background: linear-gradient(110deg, var(--purple), var(--fuchsia)); }
 td { border-color: var(--border); }
-tr:nth-child(even) td { background: rgba(97, 56, 219, .035); }
+tr:nth-child(even) td { background: rgba(100, 54, 223, .035); }
 
 .contact-grid { gap: 16px; margin-bottom: 16px; }
 .contact-card {
@@ -159,11 +159,11 @@ tr:nth-child(even) td { background: rgba(97, 56, 219, .035); }
 }
 .contact-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(97, 56, 219, .2);
+  border-color: rgba(100, 54, 223, .2);
   box-shadow: var(--shadow);
 }
 .contact-card .icon { background: linear-gradient(135deg, var(--purple), var(--fuchsia)); }
-.badge { background: rgba(97, 56, 219, .08); color: var(--purple); }
+.badge { background: rgba(100, 54, 223, .08); color: var(--purple); }
 
 details { border-color: var(--border); }
 summary { font-size: 15px; }
