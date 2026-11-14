@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VoiCat Private turns voice notes into transcripts, translations, and summaries — entirely on your device, no internet or account required.">
+  <meta name="theme-color" content="#6e5aa8">
+  <title>VoiCat Private — 100% Offline AI Voice Notes</title>
+  <style>
+    :root {
+      --ink: #17131f;
+      --muted: #6f6a78;
+      --purple: #6e5aa8;
+      --pink: #9b5ab0;
+      --line: rgba(63, 42, 91, .11);
+      --paper: #fff;
+      --soft: #f8f6fb;
+      --shadow: 0 22px 55px rgba(77, 42, 143, .14);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 4% 2%, rgba(112, 55, 223, .09), transparent 26rem),
+        radial-gradient(circle at 96% 18%, rgba(206, 45, 180, .08), transparent 28rem),
+        var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid transparent;
+      background: rgba(255, 255, 255, .78);
+      backdrop-filter: blur(18px);
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .nav.scrolled { border-color: var(--line); box-shadow: 0 8px 28px rgba(36, 20, 66, .06); }
+    .nav-inner { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 20px; font-weight: 800; text-decoration: none; }
+    .brand img { width: 38px; height: 38px; border-radius: 11px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none; transition: color .2s ease; }
+    .nav-links a:hover, .nav-links a.active { color: var(--purple); }
+
+    .hero { padding: 92px 0 74px; text-align: center; }
+    .hero-icon { width: 104px; height: 104px; margin: 0 auto 26px; border-radius: 28px; box-shadow: 0 18px 45px rgba(100, 54, 223, .25); }
+    .eyebrow { color: var(--purple); font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { max-width: 820px; margin: 14px auto 18px; font-size: clamp(46px, 7vw, 80px); line-height: .99; letter-spacing: -.055em; }
+    .gradient-text { color: var(--purple); background: linear-gradient(110deg, var(--purple), var(--pink)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .lead { max-width: 650px; margin: 0 auto; color: var(--muted); font-size: clamp(18px, 2vw, 22px); line-height: 1.55; }
+    .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border: 1px solid var(--line); border-radius: 999px; background: white; font-size: 14px; font-weight: 750; text-decoration: none; box-shadow: 0 8px 22px rgba(42, 22, 78, .07); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .button.primary { color: white; border-color: transparent; background: linear-gradient(110deg, var(--purple), var(--pink)); }
+    .button:hover { transform: translateY(-2px); border-color: rgba(100, 54, 223, .35); box-shadow: 0 14px 28px rgba(72, 39, 132, .13); }
+
+    .badge-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+    .pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 999px; background: var(--soft); border: 1px solid var(--line); font-size: 13px; font-weight: 700; color: var(--purple); }
+
+    .features { padding: 44px 0 92px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 28px; }
+    .section-head h2 { margin: 0 0 8px; font-size: clamp(30px, 4vw, 48px); letter-spacing: -.04em; }
+    .section-head p { max-width: 500px; margin: 0; color: var(--muted); line-height: 1.6; }
+    .scroll-hint { flex: none; color: var(--muted); font-size: 13px; }
+    .showcase { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 340px); gap: 18px; overflow-x: auto; padding: 8px 2px 34px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: rgba(100, 54, 223, .35) transparent; }
+    .screen-card { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 30px; background: white; box-shadow: 0 14px 36px rgba(58, 31, 107, .1); scroll-snap-align: start; transition: transform .25s ease, box-shadow .25s ease; }
+    .screen-card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+    .screen-card img { width: 100%; height: auto; }
+
+    .benefits { border-block: 1px solid var(--line); background: var(--soft); padding: 72px 0; }
+    .benefit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .benefit { min-height: 170px; padding: 24px; border: 1px solid var(--line); border-radius: 22px; background: rgba(255, 255, 255, .76); transition: transform .2s ease, background .2s ease; }
+    .benefit:hover { transform: translateY(-3px); background: white; }
+    .benefit-icon { width: 42px; height: 42px; display: grid; place-items: center; margin-bottom: 20px; border-radius: 13px; color: white; background: linear-gradient(135deg, var(--purple), var(--pink)); font-size: 20px; }
+    .benefit h3 { margin: 0 0 8px; font-size: 17px; }
+    .benefit p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+    .compare { padding: 72px 0; }
+    .compare table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+    .compare th, .compare td { padding: 14px 18px; text-align: left; font-size: 14px; border-bottom: 1px solid var(--line); }
+    .compare th { background: var(--soft); font-weight: 800; }
+    .compare tr:last-child td { border-bottom: none; }
+    .compare td.yes { color: var(--purple); font-weight: 700; }
+
+    footer { padding: 34px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; color: var(--muted); font-size: 13px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .footer-links a { text-decoration: none; }
+    .footer-links a:hover { color: var(--purple); }
+
+    @media (max-width: 780px) {
+      .wrap { width: min(100% - 28px, 1180px); }
+      .nav-inner { flex-wrap: wrap; padding: 10px 0; }
+      .nav-links { order: 2; width: 100%; justify-content: space-between; gap: 10px; }
+      .hero { padding: 66px 0 50px; }
+      .section-head { display: block; }
+      .scroll-hint { display: block; margin-top: 14px; }
+      .benefit-grid { grid-template-columns: repeat(2, 1fr); }
+      .compare table { font-size: 13px; }
+      .compare th, .compare td { padding: 10px 12px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { min-height: 62px; }
+      .brand span { font-size: 18px; }
+      .brand img { width: 34px; height: 34px; }
+      .nav-links a { font-size: 13px; }
+      .hero-icon { width: 88px; height: 88px; border-radius: 24px; }
+      .showcase { grid-auto-columns: 82%; }
+      .benefit-grid { grid-template-columns: 1fr; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="VoiCat Private home">
+        <img src="../assets/voicat-private-icon.webp" alt="" width="38" height="38">
+        <span>VoiCat Private</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html" class="active" aria-current="page">Home</a>
+        <a href="#features">Features</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <img class="hero-icon" src="../assets/voicat-private-icon.webp" alt="VoiCat Private app icon" width="104" height="104">
+      <div class="eyebrow">100% on-device · 100% offline</div>
+      <h1>Your voice, your device. <span class="gradient-text">Nowhere else.</span></h1>
+      <p class="lead">Record or import audio, then transcribe, translate, and summarize it without an internet connection — your audio and text never leave your iPhone.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="https://apps.apple.com/us/app/voicat-private/id6834722491" id="app-store-link" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
+        <a class="button" href="#features">Explore features</a>
+        <a class="button" href="contact.html">Contact us</a>
+      </div>
+      <div class="badge-row">
+        <span class="pill">No account</span>
+        <span class="pill">No cloud AI</span>
+        <span class="pill">One-time purchase to remove ads</span>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Everything on-device</div>
+            <h2>From audio to action — offline.</h2>
+            <p>Same focused VoiCat experience, powered entirely by Apple's on-device speech, translation, and intelligence frameworks instead of a cloud AI service.</p>
+          </div>
+        </div>
+
+        <div class="wrap benefit-grid" aria-label="How VoiCat Private works">
+          <article class="benefit"><div class="benefit-icon" aria-hidden="true">🎙</div><h3>Record or import</h3><p>Capture a voice note or import audio from WhatsApp, Files, and more — right from the share sheet.</p></article>
+          <article class="benefit"><div class="benefit-icon" aria-hidden="true">✦</div><h3>On-device transcription</h3><p>Apple's Speech framework turns audio into text locally, with no upload step.</p></article>
+          <article class="benefit"><div class="benefit-icon" aria-hidden="true">◎</div><h3>On-device translation</h3><p>Apple's Translation framework translates your text without sending it anywhere.</p></article>
+          <article class="benefit"><div class="benefit-icon" aria-hidden="true">⌾</div><h3>On-device summaries</h3><p>Apple Intelligence summarizes long notes locally on compatible devices.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="Key benefits">
+      <div class="wrap benefit-grid">
+        <article class="benefit"><div class="benefit-icon" aria-hidden="true">⌾</div><h3>Nothing leaves your device</h3><p>Transcription, translation, and summaries run with Apple's on-device frameworks — no audio or text is ever sent to a server.</p></article>
+        <article class="benefit"><div class="benefit-icon" aria-hidden="true">✈︎</div><h3>Works with no connection</h3><p>Airplane mode, no signal, no Wi-Fi — the core AI features keep working either way.</p></article>
+        <article class="benefit"><div class="benefit-icon" aria-hidden="true">✦</div><h3>No account, no sign-in</h3><p>Open the app and start. There's nothing to register and nothing synced to any server.</p></article>
+        <article class="benefit"><div class="benefit-icon" aria-hidden="true">◎</div><h3>One-time purchase</h3><p>Free with ads, or remove them forever with a single one-time purchase — no subscription, ever.</p></article>
+      </div>
+    </section>
+
+    <section class="compare wrap" aria-label="VoiCat vs VoiCat Private">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Which one is for you?</div>
+          <h2>VoiCat vs. VoiCat Private.</h2>
+          <p>Both apps share the same focused design. The difference is where the AI processing happens and how you pay for it.</p>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr><th></th><th>VoiCat</th><th>VoiCat Private</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>AI processing</td><td>Cloud (OpenAI)</td><td class="yes">On-device (Apple)</td></tr>
+          <tr><td>Internet required for AI</td><td>Yes</td><td class="yes">No</td></tr>
+          <tr><td>Pricing</td><td>Free tier + subscriptions</td><td class="yes">Free with ads, or one-time purchase</td></tr>
+          <tr><td>Account required</td><td>No</td><td class="yes">No</td></tr>
+          <tr><td>Summaries</td><td>All devices</td><td>Apple Intelligence–compatible devices</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© 2026 VoiCat. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="../index.html">VoiCat (cloud)</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.querySelector('#nav');
+    const updateNav = () => nav.classList.toggle('scrolled', window.scrollY > 10);
+    const homeLink = document.querySelector('.nav-links a[href="index.html"]');
+    const featuresLink = document.querySelector('.nav-links a[href="#features"]');
+    const setHomeSection = (section) => {
+      homeLink.classList.toggle('active', section === 'home');
+      featuresLink.classList.toggle('active', section === 'features');
+      homeLink.toggleAttribute('aria-current', section === 'home');
+      featuresLink.toggleAttribute('aria-current', section === 'features');
+    };
+    const featuresObserver = new IntersectionObserver(([entry]) => {
+      setHomeSection(entry.isIntersecting ? 'features' : 'home');
+    }, { rootMargin: '-30% 0px -55% 0px' });
+    featuresObserver.observe(document.querySelector('#features'));
+    updateNav();
+    window.addEventListener('scroll', updateNav, { passive: true });
+  </script>
+</body>
+</html>
